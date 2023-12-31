@@ -1,16 +1,61 @@
+
 .App {
+  background-color: white;
+}
+.header{
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+.Auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./Background/background.jpg');
+}
+
+.Auth-form {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+}
+
+.Auth-form-content {
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+
+.Auth-form-title {
   text-align: center;
+  margin-bottom: 1em;
+  font-size: 24px;
+  color: rgb(34, 34, 34);
+  font-weight: 800;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(34, 34, 34);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
   }
+  100% {
+    transform: translateY(-20px); /* Adjust the distance to move up and down */
+  }
+}
+
+h2 {
+  text-align: center;
+  color: #333;
 }
 
 .App-header {
