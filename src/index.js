@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { createContext } from 'react';
+// import { isAuthenticated } from '../../Backend/Middleware/Auth';
+export const Context=createContext({isAuthenticated:false});
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const AppWrapper=()=>{
+  const [isAuthenticated,setIsauthenticated]=useState(false);
+  const [loading,setLoading]=useState(false);
+  const [user,setUser]=useState({});
+  return (
+    <Context.Provider value={{isAuthenticated,setIsauthenticated,
+    loading,setLoading,
+    user,setUser}}>
+    <App />
+    </Context.Provider>
+  )
+}
 root.render(
   <React.StrictMode>
-    <App />
+  <AppWrapper/>
+
   </React.StrictMode>
 );
 

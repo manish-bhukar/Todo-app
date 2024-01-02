@@ -14,7 +14,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-image: url('./Background/background.jpg');
+  /* background-image: url('./Background/background.jpg'); */
 }
 
 .Auth-form {
