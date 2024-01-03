@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createContext } from 'react';
-// import { isAuthenticated } from '../../Backend/Middleware/Auth';
 export const Context=createContext({isAuthenticated:false});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const AppWrapper=()=>{

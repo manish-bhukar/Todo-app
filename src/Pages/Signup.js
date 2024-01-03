@@ -54,7 +54,7 @@ export default function Signup() {
     }
   };
 
-  if (isAuthenticated) return <Navigate to={"/home"} />;
+  if (isAuthenticated) return <Navigate to={"/"} />;
   return (
     <div>
       <Header></Header>

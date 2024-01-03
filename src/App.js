@@ -5,6 +5,7 @@ import {
   RouterProvider,
   Route,
   Link,
+  Navigate,
 } from "react-router-dom";
  import './App.css';
 import { useContext, useEffect, useState } from 'react';
@@ -29,7 +30,7 @@ const router=createBrowserRouter([
     <Signup></Signup>
   },
   {
-    path:"/home",
+    path:"/",
     element:<Home></Home>
   }
   ,{
@@ -37,14 +38,16 @@ const router=createBrowserRouter([
  element:<Profile></Profile>
   }
 ])
+
 function App() {
-const {setUser,setIsauthenticated,setLoading,loading}=useContext(Context);
+  const {setUser,setIsauthenticated,setLoading,isAuthenticated}=useContext(Context);
+// if(!isAuthenticated) return <Navigate to={"/login"}></Navigate>
 useEffect(()=>{
   setLoading(true);
   axios.get("http://localhost:40000/api/v1/users/profile",{
     withCredentials:true,
   })
-  .then((res)=>{
+  .then((res)=>{         
     setUser(res.data.user);
     setIsauthenticated(true);
     setLoading(false);
@@ -53,7 +56,7 @@ useEffect(()=>{
     setIsauthenticated(false);
     setLoading(false);
   })
-},[loading])
+},[])
   return (
     <div>
     <RouterProvider router={router}>

@@ -1,0 +1,27 @@
+.main{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto;
+margin-left: 80px;margin-right: 80px;
+  /* justify-content: center; */
+ border: 2px solid black;
+ border-radius: 5px;
+ word-wrap: break-word;
+}
+.first{
+  background-color: rgb(233, 226, 226);
+ 
+}
+.second{
+  background-color: rgb(197, 197, 191);
+}
+input{
+  margin:5px;
+  width: 20px;
+  height: 20px;
+}
+button{
+  margin-left: 5px;
+  border-radius: 3px;
+  background-color: red;
+}

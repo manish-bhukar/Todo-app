@@ -2,11 +2,14 @@ import React, { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import Header from "../component/Header";
 import { Context } from "../index";
+import {Eye, EyeOff} from 'lucide-react';
+import "../App.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 export default function (props) {
   const { isAuthenticated, setIsauthenticated, loading, setLoading } =
     useContext(Context);
+    const[eye,setEye]=useState(true);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -35,22 +38,21 @@ export default function (props) {
       );
 
       const data = response.data;
-      console.log(data);
-
-
         setIsauthenticated(true);
         toast.success(data.message);
       setLoading(false);
     } catch (error) {
-      console.error("Axios error:", error);
+   
       setIsauthenticated(false);
       toast.error(error.response.data.message);
       setLoading(false);
     }
   };
 
-  if (isAuthenticated) return <Navigate to={"/home"} />;
-
+  if (isAuthenticated) return <Navigate to={"/"} />;
+const handleClick=()=>{
+  setEye(!eye);
+}
   return (
    
     <div>
@@ -58,7 +60,7 @@ export default function (props) {
       <div className="Auth-form-container" onSubmit={handleSubmit}>
         <form className="Auth-form">
           <div className="Auth-form-content">
-            <h3 className="Auth-form-title">Sign In</h3>
+            <h3 className="Auth-form-title">Log In</h3>
             <div className="form-group mt-3">
               <label>Email address</label>
               <input
@@ -72,13 +74,20 @@ export default function (props) {
             <div className="form-group mt-3">
               <label>Password</label>
               <input
-                type="password"
+                
                 name="password"
                 className="form-control mt-1"
                 placeholder="Enter password"
                 onChange={handleForm}
+                type={eye?'password':'text'}
               />
-            </div>
+             {eye?<div className="eye cursor-pointer" onClick={handleClick}>
+        <Eye  />
+        </div>:<div className="eye cursor-pointer" onClick={handleClick}>
+        <EyeOff/> 
+        </div>
+             }
+             </div>
             <p className="forgot-password text-right mt-2">
               Forgot <Link>password</Link>
             </p>

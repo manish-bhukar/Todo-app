@@ -3,6 +3,7 @@ import styled from "styled-components"; // Import styled-components for styling
 import Header from "../component/Header";
 import Loader from "../component/Loader";
 import { Context } from "../index";
+import { Navigate } from "react-router-dom";
 
 // Styled components for better styling
 const ProfileContainer = styled.div`
@@ -27,7 +28,7 @@ export default function Profile() {
 
   // Function to determine the avatar based on gender
  
-
+if(!isAuthenticated) return <Navigate to={"/login"}></Navigate>
   return (
     <div>
       <Header />
@@ -36,7 +37,7 @@ export default function Profile() {
           <Loader />
         ) : (
           <div>
-            <img src="images.jpeg" alt="User Avatar" />
+          
             <UserInfo>
               <h1>{user.name}</h1>
               <p>{user.email}</p>
